@@ -5,7 +5,7 @@ pipeline {
         stage('Distro Info') {
             steps {
                 sh'echo "Informacoes da Distro utilizada $(hostname -i):" >> assessment.txt'
-                cat /etc/*-release >> assessment.txt
+                sh'cat /etc/*-release >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'                
             }
@@ -14,7 +14,7 @@ pipeline {
         stage('Kernel Info') {
             steps {
                 sh'echo "Informacoes do Kernel do Servidor $(hostname -i):" >> assessment.txt'
-                uname -a >> assessment.txt
+                sh'uname -a >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'
             }
@@ -22,7 +22,7 @@ pipeline {
         stage('Users Info') {
             steps {
                 sh'echo "Lista de Usuarios Presente no Servidor $(hostname -i):" >> assessment.txt'
-                cat /etc/passwd | cut -d: -f1 >> assessment.txt 
+                sh'cat /etc/passwd | cut -d: -f1 >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'
                 
@@ -31,7 +31,7 @@ pipeline {
         stage('Packages Info') {
             steps {
                 sh'echo "Pacotes instalados no Servidor $(hostname -i):" >> assessment.txt'
-                dpkg -l >> assessment.txt
+                sh'dpkg -l >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'
                 
