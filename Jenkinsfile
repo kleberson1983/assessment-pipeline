@@ -31,7 +31,7 @@ pipeline {
         stage('Packages Info') {
             steps {
                 sh'echo "Pacotes instalados no Servidor $(hostname -i):" >> assessment.txt'
-                dpkg -l >> assessment.txt'
+                dpkg -l >> assessment.txt
                 sh'echo "================================" >> assessment.txt'
                 sh'echo "================================" >> assessment.txt'
                 
